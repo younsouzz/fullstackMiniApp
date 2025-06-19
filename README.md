@@ -1,50 +1,86 @@
-# Welcome to your Expo app 👋
+# 💬 FullstackMiniApp
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple fullstack chat application built with React Native (Expo) on the frontend and Node.js (Express) on the backend.
 
-## Get started
+---
 
-1. Install dependencies
+## 🧱 Tech Stack
 
-   ```bash
-   npm install
-   ```
+### Frontend (Mobile)
+- [React Native](https://reactnative.dev/) via [Expo](https://expo.dev/)
+- [Expo Router](https://expo.github.io/router/)
+- TypeScript
+- Axios
 
-2. Start the app
+### Backend (API)
+- Node.js
+- Express
+- CORS
+- Message persistence in a `messages.json` file
 
-   ```bash
-   npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+## 🚀 Features
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- Minimalist real-time chat interface
+- Send and retrieve messages through a REST API
+- Messages are saved locally in `messages.json`
+- Compatible with Android, iOS, and Web via Expo
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## 📁 Project Structure
 
-When you're ready, run:
+fullstackMiniApp/
+├── app/ # Expo Router pages
+│ └── index.tsx # Main chat screen
+├── assets/ # Assets (fonts, images)
+├── components/ # Reusable UI components
+├── messages.json # JSON file for message persistence
+├── index.js # Node.js Express backend
+├── package.json # Project dependencies & scripts
+
+
+---
+
+## ⚙️ Setup
+
+### 1. Clone the repository
 
 ```bash
-npm run reset-project
-```
+git clone <repo-url>
+cd fullstackMiniApp
+2. Install dependencies
+npm install
+🧪 Running the App
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+✅ One command: frontend + backend
+Install concurrently:
+npm install --save-dev concurrently
+Add this script to your package.json:
+"scripts": {
+  "dev": "concurrently \"node index.js\" \"npx expo start\""
+}
+Start both:
+npm run dev
+Backend runs on: http://localhost:4000
+Expo Dev Server starts with QR code for device/simulator
+🔌 Running Backend Only
 
-## Learn more
+node index.js
+API Routes:
+GET /messages → Fetch all messages
+POST /messages → Send a new message { text: string }
+📱 Running Frontend Only
 
-To learn more about developing your project with Expo, look at the following resources:
+npx expo start
+Use a simulator or scan the QR code with Expo Go on your phone.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+⚠️ Notes
 
-## Join the community
+If you're testing on a real mobile device, replace localhost in your frontend code with your local IP address, e.g.:
+const BACKEND_URL = 'http://192.168.X.X:4000';
+Messages are saved to messages.json. Restarting the backend keeps previously saved messages.
+✍️ Author
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Youness
